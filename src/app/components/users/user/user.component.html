@@ -1,0 +1,57 @@
+<section class="main-header">
+  <main-header></main-header>
+</section>
+<section class="main-body">
+  <div class="single-user">
+    <div
+      class="user-img "
+      [ngClass]="{ 'user-img-edit': editMode }"
+      (click)="editImg()"
+      *ngIf="!imgEditMode"
+    >
+      <img
+        [src]="'../../../../assets/users-avatars/' + user.img + '.png'"
+        [alt]="user.name"
+      />
+    </div>
+    <!-- // multi imgs edit mode //  -->
+    <div *ngIf="imgEditMode" class="imgEditMode">
+      <div
+        class="user-img"
+        (click)="saveImg(m)"
+        *ngFor="let m of imgs"
+      >
+        <img [src]="'../../../../assets/users-avatars/'+ m +'.png'"/>
+      </div>
+    </div>
+
+    <div class="user-name">
+      <h2 *ngIf="!editMode">{{ user.name }}</h2>
+      <input type="text" [(ngModel)]="user.name" *ngIf="editMode" placeholder="User Name" autofocus>
+    </div>
+    <a [href]="'tel:' + user.phone" class="user-num" *ngIf="!editMode">
+      <i class="icon ion-md-call "></i>
+      <p >{{ user.phone }}</p>
+    </a>
+    <a  class="user-num" *ngIf="editMode">
+        <input type="text" [(ngModel)]="user.phone"  required placeholder="Phone Number">
+      </a>
+  </div>
+  <div class="valid-error">
+    {{ msg }}
+  </div>
+  <div class="user-tools">
+    <div class="user-tool" (click)="deleteUser()">
+      <i class="icon ion-md-trash "></i>
+      <small>Delete</small>
+    </div>
+    <div class="user-tool" (click)="onEdit()" *ngIf="!editMode">
+      <i class="icon ion-md-create "></i>
+      <small>Edit</small>
+    </div>
+    <div class="user-tool" (click)="saveUser()" *ngIf="editMode">
+      <i class="icon ion-md-checkmark "></i>
+      <small>Save</small>
+    </div>
+  </div>
+</section>

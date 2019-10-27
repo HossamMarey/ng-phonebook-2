@@ -1,0 +1,16 @@
+p, a{
+  color: rgb(124, 135, 167);
+  font-size: 14px;
+}
+p{
+transform: translateY(15px);
+margin: 0;
+}
+i {
+  color: rgba(235, 95, 186, 0.637);
+  margin: 0 4px;
+}
+a {
+  color:  rgb(171, 176, 192);
+}
+

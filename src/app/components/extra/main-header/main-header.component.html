@@ -1,0 +1,27 @@
+<div class="main-header">
+  <div class="search" [ngClass]="{ 'd-none': singleUser }">
+    <input
+      type="text"
+      placeholder="search"
+      [(ngModel)]="search"
+      (input)="onSearch()"
+    />
+    <i class="icon ion-md-search" [ngClass]="{ 'd-none': searchMode }"></i>
+    <i
+      class="icon ion-md-close"
+      [ngClass]="{ 'd-none': !searchMode }"
+      (click)="clearSearch()"
+    ></i>
+  </div>
+  <a
+    routerLink="/"
+    class="add-user go-back"
+    [ngClass]="{ 'd-none': !singleUser }"
+    (click)="clearSearch()"
+  >
+    <i class="icon ion-md-arrow-round-back"></i>
+  </a>
+  <div class="add-user" routerLink="/users/add">
+    <i class="icon ion-md-add"></i>
+  </div>
+</div>

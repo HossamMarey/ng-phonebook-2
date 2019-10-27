@@ -1,0 +1,62 @@
+/* Global css */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Roboto", sans-serif, Verdana, Geneva, Tahoma;
+  font-weight: 400;
+  min-height: 100vh;
+  background-color: #111524;
+  /* background: linear-gradient(to right top, #2e3756, #5f6d8f); */
+  color: #fff;
+  overflow: hidden;
+}
+p {
+  padding: 0;
+  margin: 0;
+}
+a {
+  color: #fff;
+}
+.d-none {
+  display: none;
+}
+/* /// page styles ////  */
+.main-page {
+  height: 85vh;
+  width: 100%;
+  background-color: #4f5b82;
+  background: linear-gradient(190deg, #4f5b82, #394364);
+  margin-top: 7vh;
+  border-radius: 30px;
+  border: 1px solid #313959bb;
+  box-shadow: -2px 2px 8px rgba(23, 29, 43, 0.1);
+  border-right: none;
+  border-top: none;
+  overflow: hidden;
+  padding: 0 !important;
+}
+.main-page .inner{
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  -ms-overflow-y: auto;
+  overflow-y: auto;
+}
+
+.main-page .inner::-webkit-scrollbar {
+  width: 7px;
+}
+
+.main-page .inner::-webkit-scrollbar-track {
+  background-color: rgb(96, 106, 133);
+
+}
+
+.main-page .inner::-webkit-scrollbar-thumb {
+  background-color: rgb(57, 66, 95);
+}

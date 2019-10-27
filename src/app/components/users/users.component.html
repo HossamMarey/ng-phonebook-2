@@ -1,0 +1,29 @@
+<section class="main-header">
+  <main-header></main-header>
+</section>
+<section class="main-body">
+
+  <div class="no-data" *ngIf="noDataMode">
+    <div class="txt">There is no data <br> Please add new Contact</div>
+    <div class="svg">
+      <img src="../../../assets/svg/arrow.svg" alt="">
+    </div>
+  </div>
+
+  <ul class="all-users">
+    <!-- single user  -->
+
+    <li class="user-item" *ngFor="let user of users" [routerLink]="['/users', user.id]" >
+      <div class="user-img">
+        <img
+          [src]="'../../../assets/users-avatars/'+user.img+'.png'"
+          alt=""
+        />
+      </div>
+      <div class="user-content">
+        <p class="user-name">{{ user.name }}</p>
+        <small class="user-num">{{ user.phone }}</small>
+      </div>
+    </li>
+  </ul>
+</section>
