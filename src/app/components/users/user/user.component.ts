@@ -47,7 +47,6 @@ export class UserComponent implements OnInit, DoCheck {
   }
   saveUser() {
     // this.user.phone = this.user.phone.trim();
-    console.log(this.user.phone.trim());
     if (!+this.user.phone) {
       this.msg = 'Please Enter a Valid Phone Number';
     } else {
