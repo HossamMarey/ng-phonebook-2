@@ -33,10 +33,9 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    FormsModule ,
+    FormsModule,
     RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+      appRoutes// <-- debugging purposes only , { enableTracing: true }
     )
   ],
   providers: [UsersService],
