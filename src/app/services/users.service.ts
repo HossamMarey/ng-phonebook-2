@@ -86,4 +86,17 @@ export class UsersService {
       });
     }
   }
+  isPhoneNumber(num) {
+    let isPhone;
+    this.users.forEach(el => {
+      if (el.phone === num) {
+        isPhone = el.phone;
+      }
+    });
+    if(isPhone === num ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

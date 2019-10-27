@@ -50,11 +50,17 @@ export class UserComponent implements OnInit, DoCheck {
     if (!+this.user.phone) {
       this.msg = 'Please Enter a Valid Phone Number';
     } else {
-      if (!this.user.name.trim()) {
-        this.msg = ' Please Enter valid Name,';
+      if (!this.user.name.trim() || this.user.name.length < 4) {
+        this.msg = ' The Name must be longer than 3 characters';
       } else if (!this.user.phone.trim()) {
         this.msg += ' Please Enter valid Number,';
       } else {
+        // uniqn number
+        if (this.serv.isPhoneNumber(this.user.phone.trim())) {
+          this.msg = 'This phone number already exists';
+          return;
+        }
+
         this.editMode = false;
         this.msg = '';
         // add user

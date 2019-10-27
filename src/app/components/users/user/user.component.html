@@ -16,26 +16,34 @@
     </div>
     <!-- // multi imgs edit mode //  -->
     <div *ngIf="imgEditMode" class="imgEditMode">
-      <div
-        class="user-img"
-        (click)="saveImg(m)"
-        *ngFor="let m of imgs"
-      >
-        <img [src]="'../../../../assets/users-avatars/'+ m +'.png'"/>
+      <div class="user-img" (click)="saveImg(m)" *ngFor="let m of imgs">
+        <img [src]="'../../../../assets/users-avatars/' + m + '.png'" />
       </div>
     </div>
 
     <div class="user-name">
       <h2 *ngIf="!editMode">{{ user.name }}</h2>
-      <input type="text" [(ngModel)]="user.name" *ngIf="editMode" placeholder="User Name" autofocus>
+      <input
+        type="text"
+        [(ngModel)]="user.name"
+        *ngIf="editMode"
+        placeholder="User Name"
+        autofocus
+        minlength="4"
+      />
     </div>
     <a [href]="'tel:' + user.phone" class="user-num" *ngIf="!editMode">
       <i class="icon ion-md-call "></i>
-      <p >{{ user.phone }}</p>
+      <p>{{ user.phone }}</p>
     </a>
-    <a  class="user-num" *ngIf="editMode">
-        <input type="text" [(ngModel)]="user.phone"  required placeholder="Phone Number">
-      </a>
+    <a class="user-num" *ngIf="editMode">
+      <input
+        type="text"
+        [(ngModel)]="user.phone"
+        required
+        placeholder="Phone Number"
+      />
+    </a>
   </div>
   <div class="valid-error">
     {{ msg }}
