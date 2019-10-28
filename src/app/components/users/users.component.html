@@ -13,7 +13,7 @@
   <ul class="all-users">
     <!-- single user  -->
 
-    <li class="user-item" *ngFor="let user of users" [routerLink]="['/users', user.id]" >
+    <li class="user-item" *ngFor="let user of users" [routerLink]="['/users', user.uid]" >
       <div class="user-img">
         <img
           [src]="'../../../assets/users-avatars/'+user.img+'.png'"

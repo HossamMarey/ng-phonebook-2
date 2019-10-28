@@ -85,10 +85,12 @@ input {
   color: #eb5fb9;
 }
 .user-tools {
-  position: fixed;
+  /* position: fixed;
   bottom: 15vh;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 50%; */
+  /* transform: translateX(-50%); */
+  width: 60%;
+  margin: 40px auto 0 auto;
   display: flex;
   justify-content: space-evenly;
   border-radius: 50px;
@@ -97,11 +99,12 @@ input {
     rgba(254, 197, 217, 0.55),
     rgba(210, 188, 250, 0.55)
   );
-  min-width: 300px;
-  padding: 5px 25px;
+  min-width: 250px;
+  padding: 5px 20px;
   box-shadow: 0 4px 20px #1014244b;
   opacity: 0.8;
 }
+
 .user-tool {
   display: flex;
   flex-direction: column;

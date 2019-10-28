@@ -8,6 +8,7 @@
 }
 .search {
   position: relative;
+  width: 60%;
 }
 .search i {
   position: absolute;
@@ -19,6 +20,7 @@
 
 .search input{
   border-radius: 50px;
+  width: 100%;
   background-color: rgb(57, 66, 95);
   border: 0;
   padding: 7px 20px;

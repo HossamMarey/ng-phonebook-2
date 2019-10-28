@@ -11,7 +11,8 @@ import { User } from '../../../interfaces/user';
 export class UserComponent implements OnInit, DoCheck {
 
   singleUser = true;
-  user: User = { name: '', id: 5, phone: '', img: 1 };
+  // user: User = { name: '', uid: 1, phone: '', img: 1 };
+  user = { name: '', phone: '', img: 1 };
   editMode = false;
   imgEditMode = false;
   addUserMode = false;
@@ -21,22 +22,22 @@ export class UserComponent implements OnInit, DoCheck {
   constructor(private serv: UsersService, private route: ActivatedRoute, private router: Router) { }
 
   ngDoCheck() {
-
     // add user mode
-    if (this.route.snapshot.params['id'] === 'add' && this.firstCheck) {
+    if (this.route.snapshot.params['uid'] === 'add' && this.firstCheck) {
       this.firstCheck = false;
-      this.user = { name: '', id: 0, phone: '', img: 1 };
+      this.user = { name: '', phone: '', img: 1 };
       this.editMode = true;
       this.imgEditMode = true;
       this.addUserMode = true;
+    } else if (this.firstCheck) {
+      this.user = this.serv.getUserById(+this.route.snapshot.params['uid'])[0];
     }
   }
 
   ngOnInit() {
     this.serv.setUserMode(true);
-
-    if (this.route.snapshot.params['id'] !== 'add') {
-      this.user = this.serv.getUserById(+this.route.snapshot.params['id'])[0];
+    if (this.route.snapshot.params['uid'] !== 'add') {
+      this.user = this.serv.getUserById(+this.route.snapshot.params['uid'])[0];
     }
 
 
@@ -50,35 +51,33 @@ export class UserComponent implements OnInit, DoCheck {
     if (!+this.user.phone) {
       this.msg = 'Please Enter a Valid Phone Number';
     } else {
+
       if (!this.user.name.trim() || this.user.name.length < 4) {
         this.msg = ' The Name must be longer than 3 characters';
       } else if (!this.user.phone.trim()) {
         this.msg += ' Please Enter valid Number,';
       } else {
         // uniqn number
-        if (this.serv.isPhoneNumber(this.user.phone.trim())) {
-          this.msg = 'This phone number already exists';
-          return;
-        }
 
-        this.editMode = false;
-        this.msg = '';
-        // add user
+
+        // add user //////////
         if (this.addUserMode) {
-          let lastId = 0;
-          this.serv.getUsers().forEach(el => {
-            if (el.id > lastId) {
-              lastId = el.id;
-            }
-          });
-          this.user.id = lastId + 1;
-
+          this.editMode = false;
+          this.msg = '';
+          // uniqn number
+          if (this.serv.isPhoneNumber(this.user.phone.trim())) {
+            this.msg = 'This phone number already exists';
+            return;
+          }
+          // add user
           this.serv.addUser(this.user);
           this.firstCheck = true;
-          this.router.navigate(['/users', this.user.id]);
-
+          this.router.navigate(['/users']);
         } else {
-          this.serv.updateUser(this.user);
+          this.editMode = false;
+          this.msg = '';
+          const newUser = this.serv.updateUser(this.user);
+          this.firstCheck = true;
         }
       }
     }

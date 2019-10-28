@@ -1,4 +1,5 @@
 <div class="main-header">
+  <!-- // search //  -->
   <div class="search" [ngClass]="{ 'd-none': singleUser }">
     <input
       type="text"
@@ -13,6 +14,7 @@
       (click)="clearSearch()"
     ></i>
   </div>
+  <!-- // go back navigation //  -->
   <a
     routerLink="/"
     class="add-user go-back"
@@ -21,6 +23,7 @@
   >
     <i class="icon ion-md-arrow-round-back"></i>
   </a>
+  <!-- add new user btn  -->
   <div class="add-user" routerLink="/users/add">
     <i class="icon ion-md-add"></i>
   </div>
